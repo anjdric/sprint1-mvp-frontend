@@ -10,7 +10,7 @@
 **Autor**: _Paulo Cesar Luna_
 
 
-##  Guia de Roteiro de Hospedagem 
+## FRONTEND - Guia de Roteiro de Hospedagem 
 
 Este projeto consiste em um aplicativo que realiza operações CRUD (Create, Read, Update, Delete) para hotéis e usuários. Ele consome uma API de backend para gerenciar os dados.
 
