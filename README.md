@@ -18,20 +18,19 @@ Este projeto consiste em um aplicativo que realiza operações CRUD (Create, Rea
 
 O projeto está organizado da seguinte forma:
 
-- **/src**: Pasta raiz do código-fonte.
-  - **/service**: Contém os arquivos relacionados à interação com a API.
-    - **auth.js**: Gerencia a autenticação do usuário, obtendo e armazenando o token de autenticação.
-    - **hotelApiClient.js**: Realiza requisições relacionadas a hotéis na API (CRUD).
-    - **userApiClient.js**: Realiza requisições relacionadas a usuários na API (CRUD).
-  - **/static**: Armazena recursos estáticos como arquivos CSS, JS, imagens.
-    - **styles.css**: Arquivo de estilos para a interface.
-  - **/interface**: Arquivos que gerenciam a interação com a interface.
-    - **hotelInterface.js**: Gerencia a interação do usuário com hotéis na interface.
-    - **userInterface.js**: Gerencia a interação do usuário com usuários na interface.
-  - **index.html**: Arquivo HTML principal da aplicação SPA.
-  - **README.md**: Documentação do projeto.
+- **`/`**: Pasta raiz do código-fonte.
+  - **`/service`**: Contém os arquivos relacionados à interação com a API.
+  - **`/interface`**: Arquivos que gerenciam a interação com a interface.   
+  - **`/static`**: Armazena recursos estáticos como arquivos CSS, JS, imagens.   
+  
+
 
 ## Responsabilidade de Cada Arquivo
+
+### Pasta `/`
+
+  - **index.html**: Arquivo HTML principal da aplicação SPA.
+  - **README.md**: Documentação do projeto.
 
 ### Pasta `/service`
 
@@ -39,18 +38,20 @@ O projeto está organizado da seguinte forma:
 - **hotelApiClient.js**: Realiza requisições relacionadas a hotéis na API (CRUD).
 - **userApiClient.js**: Realiza requisições relacionadas a usuários na API (CRUD).
 
-### Pasta `/static`
-
-- **/css**: Estilos para a interface da aplicação.
-- **/js**: Javascripts para a interface da aplicação.
-- **/img**: Imagens para a interface da aplicação.
-
 ### Pasta `/interface`
 
 - **navInterface.js**: Gerencia a interação do usuário a navegação pela interface.
 - **authInterface.js**: Gerencia a interação de autenticação de usuário com a interface.
 - **hotelInterface.js**: Gerencia a interação do usuário com hotéis na interface.
 - **userInterface.js**: Gerencia a interação do usuário com usuários na interface.
+
+### Pasta `/static`
+
+- **/css**: Estilos para a interface da aplicação.
+- **/js**: Javascripts para a interface da aplicação.
+- **/img**: Imagens para a interface da aplicação.
+
+
 
 ## Tecnologias Utilizadas
 
