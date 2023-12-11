@@ -1,4 +1,8 @@
-### **PUC RIO**
+## **PUC RIO**
+
+### **PROJETO MVP CAMADA FRONTEND**
+
+
 **Curso**: 405-303 - Engenharia de Software
 
 **Disciplina**: Sprint: Desenvolvimento Full Stack Básico
@@ -6,10 +10,9 @@
 **Autor**: _Paulo Cesar Luna_
 
 
+##  Guia de Roteiro de Hospedagem 
 
-##  Guia de Roteiro de Hospedagem
-
-Este projeto consiste em um aplicativo de frontend que realiza operações CRUD (Create, Read, Update, Delete) para hotéis e usuários. Ele consome uma API de backend para gerenciar os dados.
+Este projeto consiste em um aplicativo que realiza operações CRUD (Create, Read, Update, Delete) para hotéis e usuários. Ele consome uma API de backend para gerenciar os dados.
 
 ## Estrutura de Arquivos
 
