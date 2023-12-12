@@ -78,6 +78,16 @@ Para executar o projeto localmente, siga os passos abaixo:
   > Pode instalar o pacote **Live Server** no VSCODE [Live Server](https://github.com/ritwickdey/vscode-live-server-plus-plus).  
 
 
+## 📌 Backlogs Features
+> Funcionalidades que continuarãos endo implementadas, devido ao prazo não foi possível 
+
+- [ ] Dashboard Compartilhado
+- [ ] Cadastrar Hotel
+- [ ] Editar Hotel
+- [ ] Deletar Hotel
+- [ ] Confirmação Cadastro de Usuário por email
+
+
 ## 📌 Autores
 
 - ✒️ **Desenvolvedor** - Paulo Cesar Luna
