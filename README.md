@@ -34,18 +34,23 @@ O projeto está organizado da seguinte forma:
   - 📄 **index.html**: Arquivo HTML principal da aplicação SPA.
   - 📄 **README.md**: Documentação do projeto.
 
+### 📂 `/component`
+
+- 📄 **navInterface.js**: Componente de interação do usuário com a navegação de interface.
+
+### 📂 `/interface`
+
+- 📄 **authInterface.js**: Gerencia a interação de autenticação de usuário com a interface.
+- 📄 **hotelInterface.js**: Gerencia a interação do usuário com hotéis na interface.
+- 📄 **userInterface.js**: Gerencia a interação do usuário com a interface user.
+
 ### 📂 `/service`
 
 - 📄 **authApiClient.js**: Responsável pela autenticação do usuário.
 - 📄 **hotelApiClient.js**: Realiza requisições relacionadas a hotéis na API (CRUD).
 - 📄 **userApiClient.js**: Realiza requisições relacionadas a usuários na API (CRUD).
 
-### 📂 `/interface`
 
-- 📄 **navInterface.js**: Gerencia a interação do usuário a navegação pela interface.
-- 📄 **authInterface.js**: Gerencia a interação de autenticação de usuário com a interface.
-- 📄 **hotelInterface.js**: Gerencia a interação do usuário com hotéis na interface.
-- 📄 **userInterface.js**: Gerencia a interação do usuário com a interface user.
 
 ### 📂 `/static`
 
