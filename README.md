@@ -45,7 +45,7 @@ O projeto está organizado da seguinte forma:
 - 📄 **navInterface.js**: Gerencia a interação do usuário a navegação pela interface.
 - 📄 **authInterface.js**: Gerencia a interação de autenticação de usuário com a interface.
 - 📄 **hotelInterface.js**: Gerencia a interação do usuário com hotéis na interface.
-- 📄 **userInterface.js**: Gerencia a interação do usuário com usuários na interface.
+- 📄 **userInterface.js**: Gerencia a interação do usuário com a interface user.
 
 ### 📂 `/static`
 
