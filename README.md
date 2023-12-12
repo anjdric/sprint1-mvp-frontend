@@ -79,7 +79,7 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 
 ## 📌 Backlogs Features
-> Funcionalidades que continuarãos endo implementadas, devido ao prazo não foi possível 
+> Funcionalidades que continuarão sendo implementadas, devido ao prazo não foi possível 
 
 - [ ] Dashboard Compartilhado
 - [ ] Cadastrar Hotel
