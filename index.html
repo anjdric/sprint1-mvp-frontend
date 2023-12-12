@@ -1,0 +1,658 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Roteiro de Hospedagens</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Animais Fantásticos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:700|Playfair+Display+SC"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="static/css/external/font-awesome/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="static/css/external/adminlte.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <script>
+      document.documentElement.className += " js";
+    </script>
+  </head>
+  <body>
+    <div class="container-xl">
+      <header>
+        <img
+          src="static/img/PUC_MVP.png"
+          alt="Sprint: Desenvolvimento Full Stack Básico"
+        />
+      </header>
+
+      <div
+        class="row section-inactive"
+        style="padding: 10px 10px 0px; z-index: 1550 !important"
+      >
+        <div
+          class="col-1 animais alert alert-danger"
+          style="border-radius: 0px !important"
+        >
+          <h5>Info:</h5>
+        </div>
+        <div
+          class="col-11 alert alert-info"
+          style="border-radius: 0px !important"
+        >
+          <h5 id="message"></h5>
+        </div>
+      </div>
+      <!-- <button type="button" id="btn-message" title="Desconectar">Desconectar</button> -->
+      <nav class="menu" data-menu="suave">
+        <div class="row">
+          <div class="col-6">
+            <ul data-menu="list" id="menu">
+              <li>
+                <a
+                  id="menu-dashboard"
+                  data-auth="not-auth"
+                  href="javascript:(0)"
+                  >Compartilhado <span class="arrow-black"></span
+                ></a>
+              </li>
+              <li>
+                <a
+                  id="menu-hotel"
+                  data-auth="auth"
+                  data-menu-item="Hotel"
+                  href="javascript:(0)"
+                  >Hotel</a
+                >
+              </li>
+              <li>
+                <a
+                  id="menu-user"
+                  data-auth="auth"
+                  data-menu-item="User"
+                  href="javascript:(0)"
+                  >Usuário</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul data-menu="list2" style="float: right !important">
+              <li>
+                <a
+                  id="btn-logout"
+                  data-auth="auth"
+                  data-menu-item="auth"
+                  data-modal="Logout"
+                  href="javascript:(0)"
+                  >Sair</a
+                >
+              </li>
+              <li>
+                <a
+                  id="btn-login"
+                  data-menu-item="login"
+                  data-auth="not-auth"
+                  data-modal="abrir"
+                  href="javascript:(0)"
+                  >Entrar</a
+                >
+              </li>
+              <li>
+                <a
+                  id="btn-signup"
+                  data-menu-item="signup"
+                  data-auth="not-auth"
+                  data-modal="cadastrar"
+                  href="javascript:(0)"
+                  >Cadastrar</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Seção de Dashboard hotel -->
+      <section id="dashboardSection" class="" data-menu="content">
+        <div id="signupForm" class="card card-outline card-warning">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa fa-building"></i> Seu Próximo Destino
+            </h3>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-tool"
+                data-card-widget="collapse"
+              ></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card card-widget widget-user shadow">
+                  <div
+                    class="widget-user-header bg-info"
+                    style="
+                      background: url('static/img/hoteis/1.jpg') center center;
+                    "
+                  >
+                    <h3 class="widget-user-username">CAPRI IRVI</h3>
+                    <h5 class="widget-user-desc">Rio de Janeiro</h5>
+                  </div>
+                  <div class="widget-user-image">
+                    <img
+                      class="img-circle elevation-2"
+                      src="static/img/hotel_1.png"
+                      alt="User Avatar"
+                    />
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">R$ 130,00</h5>
+                          <span class="description-text">Diária</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-star-o bg-yellow"> </i>
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                          </h5>
+                          <span class="description-text">Estrelas</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">RJ</h5>
+                          <span class="description-text">Local</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card card-widget widget-user shadow">
+                  <div
+                    class="widget-user-header bg-info"
+                    style="
+                      background: url('static/img/hoteis/2.jpg') center center;
+                    "
+                  >
+                    <h3 class="widget-user-username">CAPRI IRVI</h3>
+                    <h5 class="widget-user-desc">Rio de Janeiro</h5>
+                  </div>
+                  <div class="widget-user-image">
+                    <img
+                      class="img-circle elevation-2"
+                      src="static/img/hotel_2.png"
+                      alt="User Avatar"
+                    />
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">R$ 130,00</h5>
+                          <span class="description-text">Diária</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-star-o bg-yellow"> </i>
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                          </h5>
+                          <span class="description-text">Estrelas</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">RJ</h5>
+                          <span class="description-text">Local</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card card-widget widget-user shadow">
+                  <div
+                    class="widget-user-header bg-info"
+                    style="
+                      background: url('static/img/hoteis/3.jpg') center center;
+                    "
+                  >
+                    <h3 class="widget-user-username">CAPRI IRVI</h3>
+                    <h5 class="widget-user-desc">Rio de Janeiro</h5>
+                  </div>
+                  <div class="widget-user-image">
+                    <img
+                      class="img-circle elevation-2"
+                      src="static/img/hotel_3.png"
+                      alt="User Avatar"
+                    />
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">R$ 130,00</h5>
+                          <span class="description-text">Diária</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-star-o bg-yellow"> </i>
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                          </h5>
+                          <span class="description-text">Estrelas</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">RJ</h5>
+                          <span class="description-text">Local</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card card-widget widget-user shadow">
+                  <div
+                    class="widget-user-header bg-info"
+                    style="
+                      background: url('static/img/hoteis/4.jpg') center center;
+                    "
+                  >
+                    <h3 class="widget-user-username">CAPRI IRVI</h3>
+                    <h5 class="widget-user-desc">Rio de Janeiro</h5>
+                  </div>
+                  <div class="widget-user-image">
+                    <img
+                      class="img-circle elevation-2"
+                      src="static/img/hotel_4.png"
+                      alt="User Avatar"
+                    />
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">R$ 130,00</h5>
+                          <span class="description-text">Diária</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-star-o bg-yellow"> </i>
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                          </h5>
+                          <span class="description-text">Estrelas</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">RJ</h5>
+                          <span class="description-text">Local</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card card-widget widget-user shadow">
+                  <div
+                    class="widget-user-header bg-info"
+                    style="
+                      background: url('static/img/hoteis/5.jpg') center center;
+                    "
+                  >
+                    <h3 class="widget-user-username">CAPRI IRVI</h3>
+                    <h5 class="widget-user-desc">Rio de Janeiro</h5>
+                  </div>
+                  <div class="widget-user-image">
+                    <img
+                      class="img-circle elevation-2"
+                      src="static/img/hotel_1.png"
+                      alt="User Avatar"
+                    />
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">R$ 130,00</h5>
+                          <span class="description-text">Diária</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-star-o bg-yellow"> </i>
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                          </h5>
+                          <span class="description-text">Estrelas</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">RJ</h5>
+                          <span class="description-text">Local</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card card-widget widget-user shadow">
+                  <div
+                    class="widget-user-header bg-info"
+                    style="
+                      background: url('static/img/hoteis/6.jpg') center center;
+                    "
+                  >
+                    <h3 class="widget-user-username">CAPRI IRVI</h3>
+                    <h5 class="widget-user-desc">Rio de Janeiro</h5>
+                  </div>
+                  <div class="widget-user-image">
+                    <img
+                      class="img-circle elevation-2"
+                      src="static/img/hotel_2.png"
+                      alt="User Avatar"
+                    />
+                    <div class="icon">
+                      <i class="ion ion-pie-graph"></i>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">R$ 130,00</h5>
+                          <span class="description-text">Diária</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                          <h5 class="description-header">
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                            <i class="fa fa-star-o bg-yellow"> </i>
+                            <i
+                              class="fa fa-star-o bg-yellow"
+                              aria-hidden="true"
+                            ></i>
+                          </h5>
+                          <span class="description-text">Estrelas</span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4">
+                        <div class="description-block">
+                          <h5 class="description-header">RJ</h5>
+                          <span class="description-text">Local</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+
+                <li class="page-item">
+                  <a class="page-link" href="#">
+                    <p class="page-year">1</p>
+                  </a>
+                </li>
+
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Users (inicialmente oculta) -->
+      <section id="hotelSection" class="" data-menu="content">
+        <div id="signupForm" class="card card-outline card-warning">
+          <div class="card-header">
+            <h3 class="card-title">Lista de Hoteis</h3>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-tool"
+                data-card-widget="collapse"
+              ></button>
+            </div>
+          </div>
+
+          <div class="card-body" style="padding: 0 !important">
+            <!-- Tabela para exibir usuários -->
+            <table
+              id="hotelTable"
+              border="1"
+              class="table table-bordered table-striped"
+            >
+              <thead>
+                <tr>
+                  <th class="hidden">ID</th>
+                  <th style="vertical-align: middle">Nome</th>
+                  <th style="vertical-align: middle">Cidade</th>
+                  <th style="text-align: center; vertical-align: middle">UF</th>
+                  <th style="vertical-align: middle">Diária</th>
+                  <th style="text-align: center; vertical-align: middle">
+                    Estrelas
+                  </th>
+                  <th style="text-align: center; vertical-align: middle">
+                    Checado
+                  </th>
+                  <th style="text-align: center; vertical-align: middle">
+                    Ativo
+                  </th>
+                  <th style="text-align: center; vertical-align: middle">
+                    Insta
+                  </th>
+                  <th style="text-align: center; vertical-align: middle">
+                    Youtube
+                  </th>
+                  <!-- <th style="text-align: center">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                  </th> -->
+
+                  <th style="width: 200px; text-align: center">
+                    <button
+                      type="button"
+                      id="btn-create-hotel"
+                      title="Cadastrar"
+                      class="btn btn-block btn-warning"
+                    >
+                      Cadastrar
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="hotelTableBody">
+                <!-- Dados dos usuários serão inseridos aqui -->
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" href="#">«</a></li>
+
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <p class="page-year">1</p>
+                </a>
+              </li>
+
+              <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Users (inicialmente oculta) -->
+      <section id="signupSection" class="" data-menu="content">
+        <div id="signupForm" class="card card-outline card-warning">
+          <div class="card-header">
+            <h3 class="card-title">Lista de Usuários</h3>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-tool"
+                data-card-widget="collapse"
+              ></button>
+            </div>
+          </div>
+
+          <div class="card-body" style="padding: 0 !important">
+            <!-- Tabela para exibir usuários -->
+            <table
+              id="userTable"
+              border="1"
+              class="table table-bordered table-striped"
+              style="width: 100%"
+            >
+              <thead>
+                <tr>
+                  <th class="hidden">ID</th>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Login</th>
+                  <th style="text-align: center; vertical-align: middle">
+                    Ativo
+                  </th>
+                  <th style="width: 200px; text-align: center">
+                    <button
+                      type="button"
+                      id="btn-create"
+                      title="Cadastrar"
+                      class="btn btn-block btn-warning"
+                    >
+                      Cadastrar
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="userTableBody">
+                <!-- Dados dos usuários serão inseridos aqui -->
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" href="#">«</a></li>
+
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <p class="page-year">1</p>
+                </a>
+              </li>
+
+              <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Autenticação -->
+      <!-- Formulário para criar um novo usuário -->
+      <section id="authSection" class="modal-container" data-modal="container">
+        <div class="modal">
+          <!-- <button data-modal="fechar" class="fechar"></button> -->
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="static/js/main.js"></script>
+  </body>
+</html>
