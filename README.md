@@ -62,6 +62,8 @@ O projeto está organizado da seguinte forma:
 - JavaScript (ES6+): Utilizado para lógica de interação com o usuário e comunicação com a API.
 - Fetch API: Utilizado para realizar requisições HTTP à API.
 - localStorage: Utilizado para armazenar o token de autenticação no navegador.
+- [Bootstrap 3](https://getbootstrap.com/docs/3.4/): Framework CSS para facilitar o design responsivo.
+- [Font Awesome](https://fontawesome.com/): Biblioteca de ícones e fontes.
 
 ## 📌 Executando o Projeto
 
