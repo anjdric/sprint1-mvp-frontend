@@ -5,7 +5,7 @@
 
 // Importing dependencies
 import UserApiClient from "../service/userApiClient.js";
-import Navigator from "../interface/navInterface.js";
+import Navigator from "../component/navInterface.js";
 
 const IUser = {
   sectionForm: document.getElementById("signupSection"),
@@ -23,15 +23,12 @@ const IUser = {
 
   // Code for interface initialization
   init() {
-    // Check If Authenticated
-    if (Navigator.isAuthenticated()) {
-      // Fetch List of Users in API
-      // this.fetchAndRenderList();
-    }
-
+    // Bind events buttom
     this.btnFetch.addEventListener("click", this.fetchAndRenderList.bind(this));
     this.btnSignup.addEventListener("click", this.createUser.bind(this));
     this.btnSignupLogin.addEventListener("click", this.createUser.bind(this));
+    // Validate Token AuthGuard Navigation
+    Navigator.navBar();
   },
 
   //

@@ -56,39 +56,6 @@ const INavigation = {
         item.classList.add("ativo");
       });
     }
-
-    // if (this.isAuthenticated()) {
-    //   console.log("getToken", true);
-    //   // If you are authenticated, deactivate the Login Section
-    //   this.sectionAuthForm.classList.add("section-inactive");
-    //   // Active Signup Section if Inactive
-    //   //this.sectionSignupForm.classList.remove("section-inactive");
-    //   // Disable Logout button
-    //   this.elementsNot.forEach(function (item) {
-    //     item.classList.add("section-inactive");
-    //   });
-    //   // Enable Logout button
-    //   this.elementsAut.forEach(function (item) {
-    //     item.classList.remove("section-inactive");
-    //   });
-    // } else {
-    //   console.log("getToken", false);
-    //   // If you are not authenticated, deactivate the Signup Section
-    //   //this.sectionSignupForm.classList.add("section-inactive");
-    //   // Active Auth Section if Inactive
-    //   this.sectionAuthForm.classList.remove("section-inactive");
-    //   // Disable Logout button
-    //   this.btnLogout.classList.add("section-inactive");
-    //   // Seleciona o elemento com o ID 'formContainer'
-    //   // Disable Logout button
-    //   this.elementsNot.forEach(function (item) {
-    //     item.classList.remove("section-inactive");
-    //   });
-    //   // Eable Logout button
-    //   this.elementsAut.forEach(function (item) {
-    //     item.classList.add("section-inactive");
-    //   });
-    // }
   },
 
   // Check if you are authorized

@@ -5,7 +5,7 @@
 
 // Importing dependencies
 import HotelApiClient from "../service/hotelApiClient.js";
-import Navigator from "./navInterface.js";
+import Navigator from "../component/navInterface.js";
 
 const IHotel = {
   sectionForm: document.getElementById("hotelSection"),

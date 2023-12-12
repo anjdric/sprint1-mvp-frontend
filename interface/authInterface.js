@@ -2,7 +2,7 @@
 ** AuthInterface.js
 Handles the interaction of user authentication, DOM events, and rendering in the interface.
 */
-import Navigator from "../interface/navInterface.js";
+import Navigator from "../component/navInterface.js";
 import Auth from "../service/authApiClient.js";
 import UserInterface from "../interface/userInterface.js";
 
@@ -14,14 +14,9 @@ const IAuth = {
 
   // Code for interface initialization
   init() {
+    // Bind events buttom
     this.btnLogout.addEventListener("click", this.logout.bind(this));
     this.btnLogin.addEventListener("click", this.login.bind(this));
-
-    // if (!Navigator.isAuthenticated()) {
-    //   this.renderFormAuth();
-    //   Navigator.modal.toggleModal();
-    // }
-
     // AuthGuard Navigation
     Navigator.navBar();
   },
@@ -34,7 +29,7 @@ const IAuth = {
 
     try {
       const data = await Auth.authenticate(username, password);
-      //console.log(data);
+      console.log(data);
 
       if (data) {
         // Set authorization token without local storage
@@ -45,11 +40,13 @@ const IAuth = {
         );
         // Redirecionar para a próxima página
         Navigator.navBar();
-
+        // Get resource API
         UserInterface.fetchAndRenderList();
         // Clean Display error message on screen
         Navigator.clearMessageAlert();
-
+        // Display message on screen
+        Navigator.setMessageAlert(`Usuário autenticado.`);
+        // Closed Modal
         Navigator.modal.toggleModal();
         // log...
         console.log("Usuário autenticado. Token salvo no localStorage.");
@@ -63,15 +60,26 @@ const IAuth = {
     }
   },
 
+  /**
+   * Login application
+   * @param {*} event
+   */
   login(event) {
     event.preventDefault();
     this.renderFormAuth();
   },
 
+  /**
+   * Logout application
+   */
   logout() {
     Navigator.clearToken();
-    //this.init();
-    window.location.reload();
+    // Display message on screen
+    Navigator.setMessageAlert(`Desconectando usuário ...`);
+    // Refresh local page
+    setTimeout(function () {
+      window.location.reload();
+    }, 3000);
   },
 
   // Renders the authentication form in the DOM dynamically

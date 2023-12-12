@@ -4,7 +4,7 @@
  */
 
 // Importing dependencies
-import Navigator from "../interface/navInterface.js";
+import Navigator from "../component/navInterface.js";
 
 /**
  * Connects to the backend through a RESTful API with the routes
