@@ -21,8 +21,9 @@ Idéia consiste em um hub de troca de locais e hospedagem entré os colaboradore
 O projeto está organizado da seguinte forma:
 
 - 📂 **`/`**: Pasta raiz do código-fonte.
-  - 📁 **`/service`**: Contém os arquivos relacionados à interação com a API.
-  - 📁 **`/interface`**: Arquivos que gerenciam a interação com a interface.   
+  - 📁 **`/component`**: Contém arquivos de componente de interação do usuário com a navegação de interface
+  - 📁 **`/interface`**: Arquivos que gerenciam a interação com a interface.  
+  - 📁 **`/service`**: Contém os arquivos relacionados à interação com a API.   
   - 📁 **`/static`**: Armazena recursos estáticos como arquivos CSS, JS, imagens.   
   
 
