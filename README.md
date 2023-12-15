@@ -21,7 +21,7 @@ Idéia consiste em um hub de troca de locais e hospedagem entré os colaboradore
 ### 🌍 DEMO WEB
 > [Aplicação Roteiro de Hospedagem](https://hotel-mvp.club).
 
-### 🌍 DEMO API - DEPENDECIA POJETO WEB
+### 🌍 DEMO API - DEPENDÊNCIA POJETO WEB
 > [API Roteiro de Hospedagem](https://api.hotel-mvp.club).  
 
 
