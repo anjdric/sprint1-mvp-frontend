@@ -18,8 +18,11 @@ Sistema tem por objetivo facilitar o compartilhamento de locais e hotéis entre 
 
 Idéia consiste em um hub de troca de locais e hospedagem entré os colaboradores da plataforma.
 
-### 🌍 DEMO
-> [Aplicação Roteiro de Hospedagem](https://hotel-mvp.club).  
+### 🌍 DEMO WEB
+> [Aplicação Roteiro de Hospedagem](https://hotel-mvp.club).
+
+### 🌍 DEMO API - DEPENDECIA POJETO WEB
+> [Aplicação Roteiro de Hospedagem](https://api.hotel-mvp.club).  
 
 
 > Entendendo o Projeto:
