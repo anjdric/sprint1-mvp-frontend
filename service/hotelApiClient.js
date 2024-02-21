@@ -1,6 +1,6 @@
 /**
- * userApiClient.js:
- * Contains methods for interacting with the user API (Search, Create, Get, Delete, List.).
+ * hotelApiClient.js:
+ * Contains methods for interacting with the hotel API (Search, Create, Get, Delete, List.).
  */
 
 // Importing dependencies
@@ -9,11 +9,11 @@ import Navigator from "../component/navInterface.js";
 /**
  * Connects to the backend through a RESTful API with the routes
  * **************************************************************
- * fetchList: Get a user by ID  - GET /api/hotels/{id}
+ * fetchList: Get a hotel by ID  - GET /api/hotels/{id}
  * findById: Get all data      - GET /api/hotels
  * create: Create a new data    - POST /api/hotels
- * editUser: Update a data by ID    - PUT /api/hotels/{id}
- * deleteUser: Delete a data by ID  - DELETE /api/hotels/{id}
+ * edithotel: Update a data by ID    - PUT /api/hotels/{id}
+ * deletehotel: Delete a data by ID  - DELETE /api/hotels/{id}
  */
 const HotelApiClient = {
   /** Set endpoint API  */
@@ -22,7 +22,7 @@ const HotelApiClient = {
   /**
    * Get a hotel by ID
    * GET /api/hotels/{id}
-   * @returns users
+   * @returns hotels
    */
   async fetchList() {
     let resourceUrl = `${this.apiUrl}/hotels`;
@@ -54,11 +54,11 @@ const HotelApiClient = {
   /**
    * Get all hotels
    * GET /api/hotels
-   * @param {*} userId
-   * @returns user
+   * @param {*} hotelid
+   * @returns hotel
    */
-  async findById(userId) {
-    let resourceUrl = `${this.apiUrl}/users/${userId}`;
+  async findById(hotelid) {
+    let resourceUrl = `${this.apiUrl}/hotels/${hotelid}`;
     // console.log(resourceUrl);
     try {
       const response = await fetch(resourceUrl, {
@@ -92,7 +92,7 @@ const HotelApiClient = {
    * @returns hotel
    */
   async create(newData) {
-    let resourceUrl = `${this.apiUrl}/users`;
+    let resourceUrl = `${this.apiUrl}/hotels`;
     try {
       const response = await fetch(resourceUrl, {
         method: "POST",
@@ -125,10 +125,10 @@ const HotelApiClient = {
    * PUT /api/hotels/{id}
    * @param {*} hotelId
    * @param {*} newData
-   * @returns user
+   * @returns hotel
    */
-  async edit(userId, newData) {
-    let resourceUrl = `${this.apiUrl}/users/${userId}`;
+  async edit(hotelId, newData) {
+    let resourceUrl = `${this.apiUrl}/hotels/${hotelId}`;
     try {
       const response = await fetch(resourceUrl, {
         method: "PUT",
@@ -161,8 +161,8 @@ const HotelApiClient = {
    * @param {*} hotelId
    * @returns statuscode 200
    */
-  async delete(userId) {
-    let resourceUrl = `${this.apiUrl}/users/${userId}`;
+  async delete(hotelId) {
+    let resourceUrl = `${this.apiUrl}/hotels/${hotelId}`;
     try {
       const response = await fetch(resourceUrl, {
         method: "DELETE",

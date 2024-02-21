@@ -32,7 +32,7 @@
 }
 
 .modal-cadastro{
-  max-height: 570px !important;
+  height: auto !important;
 }
 
 .modal-delete{

@@ -16,10 +16,14 @@ const IHotel = {
   btnReset: document.querySelector('button[type^="reset"]'),
   inputHotelId: document.getElementById("hotel_id"),
 
-  emailInput: document.getElementById("email"),
-  loginInput: document.getElementById("login"),
-  nameInput: document.getElementById("name"),
-  passwordInput: document.getElementById("password"),
+  nomeInput: document.getElementById("nome"),
+  estrelasInput: document.getElementById("estrelas"),
+  diariaInput: document.getElementById("diaria"),
+  cidadeInput: document.getElementById("cidade"),
+  ufInput: document.getElementById("uf"),
+  imageInput: document.getElementById("url_image"),
+  backgroundInput: document.getElementById("url_background"),
+
   tableBody: document.getElementById("hotelTableBody"),
 
   // Code for interface initialization
@@ -32,7 +36,7 @@ const IHotel = {
 
     this.btnFetch.addEventListener("click", this.fetchAndRenderList.bind(this));
     //console.log(this.btnFetch);
-    // this.btnCreate.addEventListener("click", this.create.bind(this));
+    this.btnCreate.addEventListener("click", this.create.bind(this));
   },
 
   //
@@ -63,12 +67,12 @@ const IHotel = {
    * @param {*} userId
    * @returns user
    */
-  async findUserById(userId) {
+  async findById(userId) {
     try {
       // Fetch User in API
-      const user = await UserApiClient.findUserById(userId);
+      const hotel = await HotelApiClient.findById(userId);
       // Render Data in the User Grid
-      return user;
+      return hotel;
     } catch (error) {
       // Display error message on screen
       Navigator.setMessageAlert(`${error.status}: ${error.message}`);
@@ -76,7 +80,7 @@ const IHotel = {
       Navigator.navGuard(error);
       // Log...
       // console.log(error);
-    }
+    } 
   },
 
   /**
@@ -89,24 +93,30 @@ const IHotel = {
    * which interacts directly with the UserApiClient
    * @param {*} event
    */
-  async handleSubmitUser(event) {
+  async handleSubmitHotel(event) {
     event.preventDefault();
     try {
       //
-      console.log("User", this.inputeUserId.value);
+      console.log("hotel", this.inputHotelId.value);
       const object = {
-        email: this.emailInput.value,
-        login: this.loginInput.value,
-        name: this.nameInput.value,
-        password: this.passwordInput.value,
+        user_id: 1,
+        nome: this.nomeInput.value,
+        estrelas: this.estrelasInput.value,
+        cidade: this.cidadeInput.value,
+        diaria: this.diariaInput.value,
+        url_image: this.imageInput.value,
+        url_background: this.backgroundInput.value,
+        uf: this.ufInput.value,
       };
 
-      if (!this.inputeUserId.value) {
+      console.log(object);
+
+      if (!this.inputHotelId.value) {
         // console.log("createUser");
-        await UserApiClient.createUser(object);
+        await HotelApiClient.create(object);
       } else {
         // Calls the API edit feature
-        await UserApiClient.editUser(this.inputeUserId.value, object);
+        await HotelApiClient.edit(this.inputHotelId.value, object);
         // Send alert Success Operation
         Navigator.setMessageAlert("OK: Atualizado com sucesso!");
       }
@@ -114,7 +124,7 @@ const IHotel = {
       // Clear All Form Fields
       Navigator.resetForm(this.formData);
       // Fetch List of Users in API
-      await this.fetchAndRenderUserList();
+      await this.fetchAndRenderList();
       // Close Modal
       Navigator.modal.toggleModal();
     } catch (error) {
@@ -128,21 +138,21 @@ const IHotel = {
   },
 
   /**
-   * HandleDeleteUser :
+   * handleDeleteHotel :
    * It is the event handler for the user delete button, and interacts directly with the UserApiClient.
    * It receives the user ID and calls the deleteUser function.
    */
-  async handleDeleteUser(event) {
+  async handleDeleteHotel(event) {
     event.preventDefault();
     try {
-      const userId = this.inputeUserId.value;
-      const message = await UserApiClient.deleteUser(userId);
+      const hotelId = this.inputHotelId.value;
+      const message = await HotelApiClient.delete(hotelId);
       // Close Modal
       Navigator.modal.toggleModal();
       // Send alert Success Operation
       Navigator.setMessageAlert(`OK: ${message}`);
       // Fetch List of Users in API
-      await this.fetchAndRenderUserList();
+      await this.fetchAndRenderList();
     } catch (error) {
       // Display error message on screen
       Navigator.setMessageAlert(`${error.status}: ${error.message}`);
@@ -158,7 +168,7 @@ const IHotel = {
   async create() {
     console.log(`Create usuário`);
     // // Open Modal with Registration Form
-    // this.renderFormSignup(0);
+     this.renderFormCadastro(0);
   },
 
   /**
@@ -169,16 +179,20 @@ const IHotel = {
   async edit(hotelId) {
     console.log(`Editar ID ${hotelId}`);
     // // Open Modal with Registration Form
-    // this.renderFormSignup();
+    this.renderFormCadastro();
     // // Implement Logic to Edit a User
-    // this.inputeUserId.value = userId;
+     this.inputHotelId.value = hotelId;
     // // Get API User
-    // const user = await this.findUserById(userId);
+     const hotel = await this.findById(hotelId);
     // // Render Data in the User Form
-    // this.inputeUserId.value = user.user_id;
-    // this.emailInput.value = user.email;
-    // this.loginInput.value = user.login;
-    // this.nameInput.value = user.name;
+     this.inputeUserId.value = hotel.user_id;
+     this.nomeInput.value = hotel.nome;
+     this.cidadeInput.value = hotel.cidade;
+     this.ufInput.value = hotel.uf;
+     this.diariaInput.value = hotel.diaria;
+     this.estrelasInput.value = hotel.estrelas;
+     this.imageInput.value = hotel.url_image;
+     this.backgroundInput.value = hotel.url_background;
   },
 
   /**
@@ -187,13 +201,67 @@ const IHotel = {
    * @param {*} hotelId
    */
   async delete(hotelId) {
+    console.log(`Excluir hotel com ID ${hotelId}`);
+    // Get API User
+    const hotel = await this.findById(hotelId);
+    console.log(hotel)
+    // Open Modal with Registration Form
+    this.renderFormDelete(hotel.nome);
+    // Implement Logic to Delete a User
+    this.inputHotelId.value = hotelId;
+  },
+
+
+  renderFormDelete(hotelNome) {
     console.log(`Excluir ID ${hotelId}`);
-    // // Get API User
-    // const hotel = await this.findById(hotelId);
-    // // Open Modal with Registration Form
-    // this.renderFormDelete(hotel.name);
-    // // Implement Logic to Delete a User
-    // this.inputeHotelId.value = hotelId;
+
+    const formHtml = ` <form id="deleteHotelForm">
+    <input type="hidden" id="user_id">
+    <div class="card card-danger">
+    <div class="card-header">
+    <h3 class="card-title"><strong><s>[${hotelNome}]</s> Deseja Deletar? </strong></h3>
+    <div class="card-tools">  
+    </div>    
+    </div>    
+    <div class="card-body" style="background-color:#ddd !important;">
+   
+    <input type="hidden" id="user_id">
+      <div class="row justify-content-center"> 
+      
+      <div class="row" style="padding-bottom: 20px !important;">      
+        <button class="btn btn-lg btn-block bg-gradient-danger" style="border: 1px solid #fff !important;" type="submit">Confirmar</button>
+        <button class="btn btn-lg btn-block btn-warning" style="border: 1px solid #fff !important;" type="button" data-modal="fechar">Cancelar</button>           
+      </div>         
+      </div>
+       
+    </div>    
+    </div>
+    </form>
+    `;
+
+    // Add the HTML form to the 'formContainerModal' element
+    const modal = Navigator.modal.containerModal.querySelector("div");
+    modal.innerHTML = "";
+    modal.classList.remove("modal-login");
+    modal.classList.remove("modal-cadastro");
+    modal.classList.add("modal-delete");
+
+    let div = document.createElement("div");
+    div.innerHTML = formHtml;
+    modal.appendChild(div);
+    const formData = document.getElementById("deleteHotelForm");
+    // Form authentication addEventListener
+    formData.addEventListener("submit", this.handleDeleteHotel.bind(this));
+    // Buttom close addEventListener
+    const btnClose = formData.querySelector('[data-modal="fechar"]');
+    btnClose.addEventListener(
+      "click",
+      Navigator.modal.eventToggleModal.bind(this)
+    );
+    // Open Modal
+    Navigator.modal.toggleModal();
+    // Bind DOM
+    this.reBind();
   },
 
   // Render database data list
@@ -208,7 +276,7 @@ const IHotel = {
         <td>${hotel.cidade}</td>
         <td style="text-align: center;">${hotel.uf}</td>     
         <td>R$ ${hotel.diaria}</td>   
-        <td style="text-align: center;">${hotel.estrelas}</td>           
+        <td style="text-align: center;">${this.getStarsHtml(hotel.estrelas)}</td>           
         <td style="text-align: center;">
         ${
           hotel.checked
@@ -241,52 +309,81 @@ const IHotel = {
       .querySelectorAll("button[data-hotel-id]")
       .forEach((item, i) => {
         // Set userId
-        const userId = item.getAttribute("data-hotel-id");
+        const hotelId = item.getAttribute("data-hotel-id");
         // Add Event Listener for Edit User.
         if (item.hasAttribute("data-hotel-edit")) {
           //console.log(`Editar usuário com ID ${userId}`);
-          item.addEventListener("click", this.edit.bind(this, userId));
+          item.addEventListener("click", this.edit.bind(this, hotelId));
         }
         // Add Event Listener to Delete User
         if (item.hasAttribute("data-hotel-delete")) {
           //console.log(`Excluir usuário com ID ${userId}`);
-          item.addEventListener("click", this.delete.bind(this, userId));
+          item.addEventListener("click", this.delete.bind(this, hotelId));
         }
       });
   },
-
+  getStarsHtml(stars) {
+    var html = '';
+    for (let index = 0; index < stars; index++) {
+       html += '<i class="fa fa-star-o bg-yellow"> </i>';
+    }
+    return html;
+  },
   // Renders the authentication form in the DOM dynamically
-  renderFormSignup(page) {
+  renderFormCadastro(page) {
     //modal.innerHTML = "";
-    const labelTitle =
-      page === 0 ? "Preencha seu Password" : "Confirme seu Password";
     const labelh3 = page === 0 ? "Cadastrar" : "Editar";
 
     const formHtml = `
-      <button data-modal="fechar" class="fechar"></button>
-      <form id="createUserForm">
-        <br/>
-        <h3>${labelh3}</h3>
-        <input type="hidden" id="user_id">
+    <button data-modal="fechar" class="fechar"></button>
+    <form id="createHotelForm">
+      <br/>
+      <h3>${labelh3}</h3>
+      <input type="hidden" id="hotel_id">
+      <input type="hidden" id="user_id">
+      <div class="row">
+        <div class="col-12">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" placeholder="Preencha o Name" [data-tooltip]="Insira o nome" required><br>
+        </div>
+      </div>
 
-        <label for="name">Nome:</label>
-        <input type="name" id="name" placeholder="Preencha o Name" [data-tooltip]="Insira o  name" required><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Preencha o Email" [data-tooltip]="Insira o  Email" required><br>
+      <div class="row">
+        <div class="col-6">
+          <label for="estrelas">Estrelas:</label>
+          <input type="number" min="1" max="5" id="estrelas" placeholder="Quantidade de Estrelas" [data-tooltip]="Total" required><br>
+        </div>
+        <div class="col-6">
+          <label for="diaria">Diária:</label>
+          <input type="number" id="diaria" placeholder="Preencha a Diária" [data-tooltip]="Insira a Diária" required><br>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col-10">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" placeholder="Preencha a Cidade" [data-tooltip]="Insiara a Diária" required><br>
+      </div>
+      <div class="col-2">
+        <label for="uf">UF:</label>
+        <input type="text" id="uf" placeholder="UF" [data-tooltip]="UF" required><br>
+      </div>
+      </div>
+
+      <div class="row">
+        <label for="url_image">Logo URL:</label>
+        <input type="text" id="url_image" placeholder="Preencha a url da Imagem" [data-tooltip]="Insiara a URL da Imagem" required><br>
     
-        <label for="login">Login:</label>
-        <input type="text" id="login" placeholder="Preencha o Login" [data-tooltip]="Insira o Login" required><br>
-    
-        <label for="password">${labelTitle}</label>
-        <input type="password" id="password" placeholder="${labelTitle}" [data-tooltip]="${labelTitle}" required><br>
-        <br/>
-        <div class="row">
-       
+        <label for="url_background">Background URL:</label>
+        <input type="text" id="url_background" placeholder="Preencha a url de background" [data-tooltip]="Insiara a URL da Imagem" required><br>
+      </div>
+
+      <br/>
+      <div class="row">       
         <button class="btn bg-gradient-success" type="submit">Salvar</button>
         <button class="btn btn-sm  bg-gradient-danger" type="reset">Limpar</button>      
-        </div>
-      </form>
+      </div>
+</form>
     `;
 
     // Add the HTML form to the 'formContainerModal' element
@@ -298,9 +395,9 @@ const IHotel = {
     let div = document.createElement("div");
     div.innerHTML = formHtml;
     modal.appendChild(div);
-    const formData = document.getElementById("createUserForm");
+    const formData = document.getElementById("createHotelForm");
     // Form authentication addEventListener
-    formData.addEventListener("submit", this.handleSubmitUser.bind(this));
+    formData.addEventListener("submit", this.handleSubmitHotel.bind(this));
     // Buttom cloase addEventListener
     const btnClose = document.querySelector('[data-modal="fechar"]');
     btnClose.addEventListener(
@@ -314,18 +411,18 @@ const IHotel = {
   },
 
   // Renders the authentication form in the DOM dynamically
-  renderFormDelete(userName) {
-    const formHtml = ` <form id="deleteUserForm">
-    <input type="hidden" id="user_id">
+  renderFormDelete(hotelNome) {
+    const formHtml = ` <form id="deleteHotelForm">
+    <input type="hidden" id="hotel_id">
     <div class="card card-danger">
     <div class="card-header">
-    <h3 class="card-title"><strong><s>[${userName}]</s> Deseja Deletar? </strong></h3>
+    <h3 class="card-title"><strong><s>[${hotelNome}]</s> Deseja Deletar? </strong></h3>
     <div class="card-tools">  
     </div>    
     </div>    
     <div class="card-body" style="background-color:#ddd !important;">
    
-    <input type="hidden" id="user_id">
+    <input type="hidden" id="hotel_id">
       <div class="row justify-content-center"> 
       
       <div class="row" style="padding-bottom: 20px !important;">      
@@ -349,9 +446,9 @@ const IHotel = {
     let div = document.createElement("div");
     div.innerHTML = formHtml;
     modal.appendChild(div);
-    const formData = document.getElementById("deleteUserForm");
+    const formData = document.getElementById("deleteHotelForm");
     // Form authentication addEventListener
-    formData.addEventListener("submit", this.handleDeleteUser.bind(this));
+    formData.addEventListener("submit", this.handleDeleteHotel.bind(this));
     // Buttom close addEventListener
     const btnClose = formData.querySelector('[data-modal="fechar"]');
     btnClose.addEventListener(
@@ -366,14 +463,19 @@ const IHotel = {
 
   // Function to binnd html elements created in the DOM dynamically
   reBind() {
-    this.formData = document.getElementById("createUserForm");
+    this.formData = document.getElementById("createHotelForm");
     this.btnSignup = document.getElementById("btn-create");
     this.btnReset = document.querySelector('button[type^="reset"]');
     this.inputeUserId = document.getElementById("user_id");
-    this.emailInput = document.getElementById("email");
-    this.loginInput = document.getElementById("login");
-    this.nameInput = document.getElementById("name");
-    this.passwordInput = document.getElementById("password");
+    
+    this.inputHotelId = document.getElementById("hotel_id")
+    this.nomeInput = document.getElementById("nome");
+    this.cidadeInput = document.getElementById("cidade");
+    this.ufInput = document.getElementById("uf");
+    this.estrelasInput = document.getElementById("estrelas");
+    this.diariaInput = document.getElementById("diaria");
+    this.imageInput = document.getElementById("url_image");
+    this.backgroundInput = document.getElementById("url_background");
   },
 };
 

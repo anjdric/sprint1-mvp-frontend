@@ -31,7 +31,7 @@ const IUser = {
     Navigator.navBar();
   },
 
-  //
+  
   /**
    * Display All Users Registered in the Database
    * @returns users
